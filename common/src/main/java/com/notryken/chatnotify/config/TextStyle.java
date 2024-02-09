@@ -59,6 +59,8 @@ public class TextStyle {
                 Optional.ofNullable(strikethrough.isEnabled() ? strikethrough.isOn() : null),
                 Optional.ofNullable(obfuscated.isEnabled() ? obfuscated.isOn() : null),
                 Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
                 Optional.empty());
     }
 }

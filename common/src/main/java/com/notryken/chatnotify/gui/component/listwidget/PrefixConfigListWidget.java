@@ -14,10 +14,10 @@ import java.util.Locale;
  */
 public class PrefixConfigListWidget extends ConfigListWidget {
     public PrefixConfigListWidget(Minecraft minecraft, int width, int height,
-                                  int top, int bottom, int itemHeight,
+                                  int y, int itemHeight,
                                   int entryRelX, int entryWidth, int entryHeight, 
                                   int scrollWidth) {
-        super(minecraft, width, height, top, bottom, itemHeight, 
+        super(minecraft, width, height, y, itemHeight, 
                 entryRelX, entryWidth, entryHeight, scrollWidth);
 
         addEntry(new ConfigListWidget.Entry.TextEntry(entryX, entryWidth, entryHeight,
@@ -40,10 +40,10 @@ public class PrefixConfigListWidget extends ConfigListWidget {
     }
 
     @Override
-    public PrefixConfigListWidget resize(int width, int height, int top, int bottom,
+    public PrefixConfigListWidget resize(int width, int height, int y,
                                          int itemHeight, double scrollAmount) {
         PrefixConfigListWidget newListWidget = new PrefixConfigListWidget(
-                minecraft, width, height, top, bottom, itemHeight,
+                minecraft, width, height, y, itemHeight,
                 entryRelX, entryWidth, entryHeight, scrollWidth);
         newListWidget.setScrollAmount(scrollAmount);
         return newListWidget;

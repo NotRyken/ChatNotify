@@ -11,8 +11,6 @@ import net.minecraft.network.chat.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.function.Supplier;
-
 /**
  * A {@code ConfigScreen} contains one tightly-coupled {@code ConfigListWidget},
  * which is used to display all configuration options required for the screen.
@@ -22,7 +20,7 @@ public class ConfigScreen extends OptionsSubScreen {
     protected ConfigListWidget listWidget;
 
     public final int listTop = 32;
-    public final Supplier<Integer> listBottom = () -> height - 32;
+    public final int bottomMargin = 32;
     public final int listItemHeight = 25;
 
     public ConfigScreen(Screen lastScreen, Component title, ConfigListWidget listWidget) {
@@ -32,7 +30,8 @@ public class ConfigScreen extends OptionsSubScreen {
 
     @Override
     protected void init() {
-        listWidget = listWidget.resize(width, height, listTop, listBottom.get(), listItemHeight, listWidget.getScrollAmount());
+        listWidget = listWidget.resize(width, height - listTop - bottomMargin,
+                listTop, listItemHeight, listWidget.getScrollAmount());
         listWidget.setScreen(this);
         addRenderableWidget(listWidget);
         addRenderableWidget(Button.builder(CommonComponents.GUI_DONE,

@@ -2,6 +2,7 @@ package com.notryken.chatnotify.util;
 
 import net.minecraft.network.chat.TextColor;
 
+import java.util.Optional;
 import java.util.function.IntBinaryOperator;
 import java.util.function.IntUnaryOperator;
 
@@ -30,7 +31,8 @@ public class ColorUtil {
      */
     public static TextColor parseColor(String strColor) {
         if (strColor.startsWith("#") && strColor.length() == 7) {
-            return TextColor.parseColor(strColor);
+            Optional<TextColor> result = TextColor.parseColor(strColor).get().left();
+            if (result.isPresent()) return result.get();
         }
         return null;
     }

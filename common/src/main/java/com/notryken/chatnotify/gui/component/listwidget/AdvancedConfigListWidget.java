@@ -22,11 +22,10 @@ import com.notryken.chatnotify.ChatNotify;
 public class AdvancedConfigListWidget extends ConfigListWidget {
     private final Notification notif;
 
-    public AdvancedConfigListWidget(Minecraft minecraft, int width, int height,
-                                    int top, int bottom, int itemHeight,
+    public AdvancedConfigListWidget(Minecraft minecraft, int width, int height, int y, int itemHeight,
                                     int entryRelX, int entryWidth, int entryHeight,
                                     int scrollWidth, Notification notif) {
-        super(minecraft, width, height, top, bottom, itemHeight,
+        super(minecraft, width, height, y, itemHeight,
                 entryRelX, entryWidth, entryHeight, scrollWidth);
         this.notif = notif;
 
@@ -125,10 +124,10 @@ public class AdvancedConfigListWidget extends ConfigListWidget {
     }
 
     @Override
-    public AdvancedConfigListWidget resize(int width, int height, int top, int bottom,
+    public AdvancedConfigListWidget resize(int width, int height, int y,
                                            int itemHeight, double scrollAmount) {
         AdvancedConfigListWidget newListWidget = new AdvancedConfigListWidget(
-                minecraft, width, height, top, bottom, itemHeight,
+                minecraft, width, height, y, itemHeight,
                 entryRelX, entryWidth, entryHeight, scrollWidth, notif);
         newListWidget.setScrollAmount(scrollAmount);
         return newListWidget;
@@ -137,7 +136,7 @@ public class AdvancedConfigListWidget extends ConfigListWidget {
     private void openKeyConfig(Trigger trigger) {
         minecraft.setScreen(new ConfigScreen(minecraft.screen,
                 Component.translatable("screen.chatnotify.title.key"),
-                new KeyConfigListWidget(minecraft, screen.width, screen.height, y0, y1,
+                new KeyConfigListWidget(minecraft, screen.width, screen.height, getY(),
                         itemHeight, entryRelX, entryWidth, entryHeight, scrollWidth, trigger)));
     }
 

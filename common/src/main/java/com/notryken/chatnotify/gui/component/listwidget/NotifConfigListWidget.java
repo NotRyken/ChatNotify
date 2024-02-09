@@ -26,11 +26,11 @@ public class NotifConfigListWidget extends ConfigListWidget {
     private final boolean isUsernameNotif;
 
     public NotifConfigListWidget(Minecraft minecraft, int width, int height,
-                                 int top, int bottom, int itemHeight,
+                                 int y, int itemHeight,
                                  int entryRelX, int entryWidth, int entryHeight,
                                  int scrollWidth, Notification notif,
                                  boolean isUsernameNotif) {
-        super(minecraft, width, height, top, bottom, itemHeight, 
+        super(minecraft, width, height, y, itemHeight, 
                 entryRelX, entryWidth, entryHeight, scrollWidth);
         notif.editing = true;
         this.notif = notif;
@@ -66,10 +66,10 @@ public class NotifConfigListWidget extends ConfigListWidget {
     }
 
     @Override
-    public NotifConfigListWidget resize(int width, int height, int top, int bottom,
+    public NotifConfigListWidget resize(int width, int height, int y,
                                         int itemHeight, double scrollAmount) {
         NotifConfigListWidget newListWidget = new NotifConfigListWidget(
-                minecraft, width, height, top, bottom, itemHeight,
+                minecraft, width, height, y, itemHeight,
                 entryRelX, entryWidth, entryHeight, scrollWidth, notif, isUsernameNotif);
         newListWidget.setScrollAmount(scrollAmount);
         return newListWidget;
@@ -84,28 +84,28 @@ public class NotifConfigListWidget extends ConfigListWidget {
     private void openKeyConfig(Trigger trigger) {
         minecraft.setScreen(new ConfigScreen(minecraft.screen,
                 Component.translatable("screen.chatnotify.title.key"),
-                new KeyConfigListWidget(minecraft, screen.width, screen.height, y0, y1,
+                new KeyConfigListWidget(minecraft, screen.width, screen.height, getY(),
                         itemHeight, entryRelX, entryWidth, entryHeight, scrollWidth, trigger)));
     }
 
     private void openColorConfig() {
         minecraft.setScreen(new ConfigScreen(minecraft.screen,
                 Component.translatable("screen.chatnotify.title.color"),
-                new ColorConfigListWidget(minecraft, screen.width, screen.height, y0, y1, 
+                new ColorConfigListWidget(minecraft, screen.width, screen.height, getY(), 
                         itemHeight, entryRelX, entryWidth, entryHeight, scrollWidth, notif)));
     }
 
     private void openSoundConfig() {
         minecraft.setScreen(new ConfigScreen(minecraft.screen,
                 Component.translatable("screen.chatnotify.title.sound"),
-                new SoundConfigListWidget(minecraft, screen.width, screen.height, y0, y1, 
+                new SoundConfigListWidget(minecraft, screen.width, screen.height, getY(), 
                         itemHeight, entryRelX, entryWidth, entryHeight, scrollWidth, notif)));
     }
 
     private void openAdvancedConfig() {
         minecraft.setScreen(new ConfigScreen(minecraft.screen,
                 Component.translatable("screen.chatnotify.title.advanced"),
-                new AdvancedConfigListWidget(minecraft, screen.width, screen.height, y0, y1, 
+                new AdvancedConfigListWidget(minecraft, screen.width, screen.height, getY(), 
                         itemHeight, entryRelX, entryWidth, entryHeight, scrollWidth, notif)));
     }
 

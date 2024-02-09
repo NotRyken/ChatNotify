@@ -18,10 +18,10 @@ public class SoundConfigListWidget extends ConfigListWidget {
     private final Notification notif;
 
     public SoundConfigListWidget(Minecraft minecraft, int width, int height,
-                                 int top, int bottom, int itemHeight,
+                                 int y, int itemHeight,
                                  int entryRelX, int entryWidth, int entryHeight,
                                  int scrollWidth, Notification notif) {
-        super(minecraft, width, height, top, bottom, itemHeight, 
+        super(minecraft, width, height, y, itemHeight, 
                 entryRelX, entryWidth, entryHeight, scrollWidth);
         this.notif = notif;
 
@@ -146,10 +146,10 @@ public class SoundConfigListWidget extends ConfigListWidget {
     }
 
     @Override
-    public SoundConfigListWidget resize(int width, int height, int top, int bottom,
+    public SoundConfigListWidget resize(int width, int height, int y,
                                         int itemHeight, double scrollAmount) {
         SoundConfigListWidget newListWidget = new SoundConfigListWidget(
-                minecraft, width, height, top, bottom, itemHeight,
+                minecraft, width, height, y, itemHeight,
                 entryRelX, entryWidth, entryHeight, scrollWidth, notif);
         newListWidget.setScrollAmount(scrollAmount);
         return newListWidget;

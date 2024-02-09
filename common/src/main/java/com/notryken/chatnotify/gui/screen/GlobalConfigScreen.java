@@ -16,7 +16,7 @@ public class GlobalConfigScreen extends ConfigScreen {
 
     public GlobalConfigScreen(Screen lastScreen) {
         super(lastScreen, Component.translatable("screen.chatnotify.title.default"),
-                new GlobalConfigListWidget(Minecraft.getInstance(), 0, 0, 0, 0,
+                new GlobalConfigListWidget(Minecraft.getInstance(), 0, 0, 0,
                         0, -120, 240, 20, 320));
     }
 

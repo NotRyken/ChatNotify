@@ -44,10 +44,10 @@ public class KeyConfigListWidget extends ConfigListWidget {
     };
 
     public KeyConfigListWidget(Minecraft minecraft, int width, int height,
-                               int top, int bottom, int itemHeight,
+                               int y, int itemHeight,
                                int entryRelX, int entryWidth, int entryHeight,
                                int scrollWidth, Trigger trigger) {
-        super(minecraft, width, height, top, bottom, itemHeight,
+        super(minecraft, width, height, y, itemHeight,
                 entryRelX, entryWidth, entryHeight, scrollWidth);
         this.trigger = trigger;
 
@@ -93,10 +93,10 @@ public class KeyConfigListWidget extends ConfigListWidget {
     }
 
     @Override
-    public ConfigListWidget resize(int width, int height, int top, int bottom,
+    public ConfigListWidget resize(int width, int height, int y,
                                    int itemHeight, double scrollAmount) {
         KeyConfigListWidget newListWidget = new KeyConfigListWidget(
-                minecraft, width, height, top, bottom, itemHeight,
+                minecraft, width, height, y, itemHeight,
                 entryRelX, entryWidth, entryHeight, scrollWidth, trigger);
         newListWidget.setScrollAmount(scrollAmount);
         return newListWidget;

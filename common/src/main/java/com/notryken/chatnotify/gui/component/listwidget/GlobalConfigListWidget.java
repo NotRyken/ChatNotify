@@ -22,11 +22,10 @@ import java.util.List;
  * of buttons referencing {@code Notification} instances.
  */
 public class GlobalConfigListWidget extends ConfigListWidget {
-    public GlobalConfigListWidget(Minecraft minecraft, int width, int height,
-                                  int top, int bottom, int itemHeight,
+    public GlobalConfigListWidget(Minecraft minecraft, int width, int height, int y, int itemHeight,
                                   int entryRelX, int entryWidth, int entryHeight, 
                                   int scrollWidth) {
-        super(minecraft, width, height, top, bottom, itemHeight, 
+        super(minecraft, width, height, y, itemHeight,
                 entryRelX, entryWidth, entryHeight, scrollWidth);
 
         addEntry(new ConfigListWidget.Entry.TextEntry(entryX, entryWidth, entryHeight,
@@ -52,8 +51,8 @@ public class GlobalConfigListWidget extends ConfigListWidget {
     }
 
     @Override
-    public GlobalConfigListWidget resize(int width, int height, int top, int bottom, int itemHeight, double scrollAmount) {
-        GlobalConfigListWidget newListWidget = new GlobalConfigListWidget(minecraft, width, height, top, bottom, itemHeight,
+    public GlobalConfigListWidget resize(int width, int height, int y, int itemHeight, double scrollAmount) {
+        GlobalConfigListWidget newListWidget = new GlobalConfigListWidget(minecraft, width, height, y, itemHeight,
                 entryRelX, entryWidth, entryHeight, scrollWidth);
         newListWidget.setScrollAmount(scrollAmount);
         return newListWidget;
@@ -93,14 +92,14 @@ public class GlobalConfigListWidget extends ConfigListWidget {
     private void openPrefixConfig() {
         minecraft.setScreen(new ConfigScreen(minecraft.screen,
                 Component.translatable("screen.chatnotify.title.prefix"),
-                new PrefixConfigListWidget(minecraft, screen.width, screen.height, y0, y1,
+                new PrefixConfigListWidget(minecraft, screen.width, screen.height, getY(),
                         itemHeight, entryRelX, entryWidth, entryHeight, scrollWidth)));
     }
 
     private void openNotificationConfig(int index) {
         minecraft.setScreen(new ConfigScreen(minecraft.screen,
                 Component.translatable("screen.chatnotify.title.notif"),
-                new NotifConfigListWidget(minecraft, screen.width, screen.height, y0, y1, 
+                new NotifConfigListWidget(minecraft, screen.width, screen.height, getY(),
                         itemHeight, entryRelX, entryWidth, entryHeight, scrollWidth,
                         ChatNotify.config().getNotifs().get(index), index == 0)));
     }

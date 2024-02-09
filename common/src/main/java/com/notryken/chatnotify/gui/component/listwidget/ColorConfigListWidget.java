@@ -21,11 +21,10 @@ import java.util.function.Supplier;
 public class ColorConfigListWidget extends ConfigListWidget {
     public final Notification notif;
 
-    public ColorConfigListWidget(Minecraft minecraft, int width, int height,
-                                 int top, int bottom, int itemHeight,
+    public ColorConfigListWidget(Minecraft minecraft, int width, int height, int y, int itemHeight,
                                  int entryRelX, int entryWidth, int entryHeight,
                                  int scrollWidth, Notification notif) {
-        super(minecraft, width, height, top, bottom, itemHeight, 
+        super(minecraft, width, height, y, itemHeight, 
                 entryRelX, entryWidth, entryHeight, scrollWidth);
         this.notif = notif;
 
@@ -57,10 +56,10 @@ public class ColorConfigListWidget extends ConfigListWidget {
     }
 
     @Override
-    public ColorConfigListWidget resize(int width, int height, int top, int bottom,
+    public ColorConfigListWidget resize(int width, int height, int y,
                                         int itemHeight, double scrollAmount) {
         ColorConfigListWidget newListWidget = new ColorConfigListWidget(
-                minecraft, width, height, top, bottom, itemHeight,
+                minecraft, width, height, y, itemHeight,
                 entryRelX, entryWidth, entryHeight, scrollWidth, notif);
         newListWidget.setScrollAmount(scrollAmount);
         return newListWidget;
